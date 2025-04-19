@@ -1,3 +1,3 @@
-from models.item import Item
+from models.text_input import TextInput
 
-__all__ = [Item]
+__all__ = [TextInput]

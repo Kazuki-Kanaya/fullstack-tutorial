@@ -1,3 +1,7 @@
 fastapi
 uvicorn[standard]
 black
+transformers
+torch
+motor
+python-dotenv
