@@ -1,27 +1,24 @@
-// components/ResultList.tsx
-import { useEffect, useState } from "react";
-import { API } from "../../api/api"
 import { ResultType } from "../../schemas/result";
+import styles from "./ResultList.module.css";
 
-const ResultList = () => {
-  const [results, setResults] = useState<ResultType[]>([]);
+type Props = {
+  results: ResultType[];
+}
 
-  useEffect(() => {
-    (async () => {
-      const data = await API.getResults();
-      if (data) setResults(data);
-    })();
-  }, []);
+const ResultList = (props: Props) => {
+  const { results } = props
 
-  console.log(results)
 
   return (
-    <div>
-      <h2>感情分析の履歴</h2>
-      <ul>
+    <div className={styles.container}>
+      <h2 className={styles.heading}>感情分析の履歴</h2>
+      <ul className={styles.list}>
         {results.map((item) => (
-          <li key={item._id}>
-            <strong>{item.label}</strong>（信頼度: {Math.round(item.score * 100)}%）
+          <li key={item._id} className={styles.item}>
+            <p className={styles.text}>テキスト: {item.text}</p>
+            <p className={styles.label}>
+              判定: <strong>{item.label}</strong>（信頼度: {Math.round(item.score * 100)}%）
+            </p>
           </li>
         ))}
       </ul>

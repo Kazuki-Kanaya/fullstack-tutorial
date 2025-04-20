@@ -22,4 +22,14 @@ export class API {
             console.log("Error fetching:", error);
         }
     }
+
+    static deleteResults = async () => {
+        try {
+            const response = await api.delete("/results");
+            return response.data;
+        } catch (error) {
+            console.error("Error deleting results:", error);
+        }
+    }
+    
 }

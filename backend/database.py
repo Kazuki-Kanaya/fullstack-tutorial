@@ -7,3 +7,4 @@ load_dotenv()
 MONGO_URL = os.getenv("MONGO_URL")
 client = AsyncIOMotorClient(MONGO_URL)
 db = client["emotional_db"]
+collection = db.get_collection("items")
